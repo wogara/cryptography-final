@@ -26,13 +26,13 @@ app.get('/blockcipher',function(req,res){
 
 
 app.post('/modeofop',function(req,res){
-  console.log(req.body.q1);
-  console.log(req.body.q2);
-  console.log(req.body.q3);
-  console.log(req.body.q4);
-  console.log(req.body.q5);
-  console.log(req.body.q6);
-  console.log(req.body);
+  //console.log(req.body.q1);
+  //console.log(req.body.q2);
+  //console.log(req.body.q3);
+  //console.log(req.body.q4);
+  //console.log(req.body.q5);
+  //console.log(req.body.q6);
+  //console.log(req.body);
 
 
   fs.readFile('modeofop.csv', function(err, data) {
@@ -77,14 +77,45 @@ app.post('/modeofop',function(req,res){
         ];
       
   
-        console.log(model.classify(testData[0]) === 'aes'); // true
-        console.log(model.classify(testData[1]) === 'triple'); // false
-        console.log(model.classify(testData[2]) === 'simon');
+      //  console.log(model.classify(testData[0]) === 'aes'); // true
+      //  console.log(model.classify(testData[1]) === 'triple'); // false
+      //  console.log(model.classify(testData[2]) === 'simon');
        // if (model.classify(testData[2]) == 'unknown'){
        //   console.log("aes");
        // }
+
+
+
         console.log(model.classify(testData[2]));
         let results = model.classify(testData[2]);
+
+        if (results=='ofb' || results == 'cgcm' || results=='unknown'){
+          results = 'gcm';
+
+        }
+
+        if (results == 'ecb'){
+          results = 'Electronic Code Book (ECB) mode';
+          blurb = 'This mode of operation is the simplest to implement and also the fastest. However, do not use this if security is a top priority. It leaks block equality which may be a big problem with redundant data.';
+          img = 'https://flylib.com/books/3/190/1/html/2/images/06fig03.jpg';
+          link = 'https://www.techtarget.com/searchsecurity/definition/Electronic-Code-Book#:~:text=Electronic%20Code%20Book%20(ECB)%20is,is%20broken%20into%20numerous%20blocks.';
+        }else if (results == 'cbc'){
+          results = "Cipher Block Chaining (CBC) mode";
+          blurb = "This mode of operation is a great choice if you can allow for sequential decryption of data in your project. It is very secure and fast so give it a try!";
+          img = 'https://media.geeksforgeeks.org/wp-content/uploads/Cipher-Block-Chaining-1.png';
+          link = 'https://www.educative.io/edpresso/what-is-cbc';
+        }else if (results == 'gcm'){
+          results = "Galois/Counter mode";
+          blurb = "This mode of operation is a great option for any streaming service. It is incredibly fast and highly secure. Give it a shot!";
+          img = 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/GCM-Galois_Counter_Mode_with_IV.svg/500px-GCM-Galois_Counter_Mode_with_IV.svg.png';
+          link = 'https://www.ibm.com/docs/en/zos/2.3.0?topic=operation-galoiscounter-mode-gcm';
+        }else if (results == 'cfb'){
+          results = "Cipher Feedback (CFB) mode";
+          blurb = "The CFB mode is a great option for any streaming service. The CFB mode operates on segments (can be between one bit and the block size) instead of blocks. It is very fast and secure, give it a shot!";
+          img = 'https://i.stack.imgur.com/jaqUc.png';
+          link = 'https://www.techtarget.com/searchsecurity/definition/ciphertext-feedback#:~:text=In%20cryptography%2C%20ciphertext%20feedback%20(CFB,an%20encryption%20algorithm%2C%20or%20cipher.';
+        }
+
 
         res.render("modeofopresults",{results:results})
   
@@ -190,7 +221,6 @@ app.post('/blockcipher',function(req,res){
     });
   });
 
-  
 
 });
 
