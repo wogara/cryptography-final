@@ -19,7 +19,9 @@ app.get("/",function(req,res){
 app.get('/modeofop',function(req,res){
   res.render("modeofop");
 })
-
+app.get('/blockcipher',function(req,res){
+  res.render("blockcipher");
+})
 
 
 
