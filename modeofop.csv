@@ -1,0 +1,14 @@
+id,q1,q2,q3,q4,q5,BLOCK_CIPHER
+1,a,a,a,b,a,ecb
+2,a,b,a,a,b,cbc
+3,a,a,a,a,b,cbc
+4,a,b,a,b,b,cbc
+5,c,b,b,b,a,ofb
+6,c,b,b,a,a,ofb
+7,c,a,b,b,a,ofb
+8,b,b,b,a,a,cgcm
+9,b,a,b,a,a,cgcm
+10,b,a,b,b,a,cgcm
+11,a,b,b,b,b,cfb
+12,a,a,b,b,b,cfb
+13,a,b,b,a,b,cfb

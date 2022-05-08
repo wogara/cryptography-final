@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Which Mode of Operation is best for you?</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ </head>
+ <body>
+  <br />
+  <div class="container">
+   <h2 align="center">Which Mode of Operation is best for you?</h2>
+   <br />
+   <div class="col-md-6" style="margin:0 auto; float:none;">
+    <form action ="/modeofop" method="post">
+     <h3 align="center">Choose the choice that best works for you</h3>
+     <br />
+   
+     <div class="form-group">
+      <label>1) What is the purpose of your product?</label>
+      <br>
+      <input type="radio" id = "q1a" name="q1" value="a">
+      <label for ="q1a">A) General Purpose</label><br>
+      <input type="radio" id = "q1b" name="q1" value="b">
+      <label for ="q1b">B) Hardware</label><br>
+      <input type="radio" id = "q1c" name="q1" value="c">
+      <label for ="q1c">C) Streaming</label><br>
+      
+     </div>
+
+
+     <div class="form-group">
+      <label>2) How important is speed to you?</label>
+      <br>
+        <input type="radio" id="q2yes" name="q2" value="a">
+        <label for ="q2yes">Very Important</label><br>
+        <input type="radio" id="q2no" name="q2" value="b">
+        <label for="q2no">Not Important</label><br>
+      
+     </div>
+
+
+     <div class="form-group">
+        <label>3) Would you like to encrypt your data in a set block at a time or one bit at a time?</label>
+        <br>
+          <input type="radio" id="q3a" name="q3" value="a">
+          <label for ="q3a">A) Block</label><br>
+          <input type="radio" id="q3b" name="q3" value="b">
+          <label for="q3b">B) One Bit </label><br>
+        
+    
+       </div>
+
+       <div class="form-group">
+        <label>4) How important is security to you?</label>
+        <br>
+          <input type="radio" id="q4a" name="q4" value="a">
+          <label for ="q4a">A) Very Important</label><br>
+          <input type="radio" id="q4b" name="q4" value="b">
+          <label for="q4b">B) Not Important</label><br>
+        
+       </div>
+
+       
+
+
+
+     <div class="form-group">
+        <label> 5) In the data structure of your product, do you need to access data randomly?</label>
+        <br>
+          <input type="radio" id="q5a" name="q5" value="a">
+          <label for ="q5a">A) Yes</label><br>
+          <input type="radio" id="q5b" name="q5" value="b">
+          <label for="q5b">B) No</label><br>
+        
+          
+       </div>
+
+
+     <div class="form-group" align="center">
+      <input id="clickMe" type="submit" class="btn btn-info"  />
+      <br>
+     <!-- <a class="btn btn-info" href="modes.php" style="margin: 5px">Next</a> -->
+     </div>
+    </form>
+   </div>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,4 @@
+id,attr1,attr2,attr3,attr4,class
+1,no,yes,no,yes,CLASS1
+2,yes,yes,no,yes,CLASS2
+3,no,no,no,no,CLASS1
