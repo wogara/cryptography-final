@@ -11,9 +11,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 app.get("/",function(req,res){
-  //res.render("blockcipher"); 
   res.render("home");
-  //res.render("modeofop");
 });
 
 app.get('/modeofop',function(req,res){
@@ -23,17 +21,7 @@ app.get('/blockcipher',function(req,res){
   res.render("blockcipher");
 })
 
-
-
 app.post('/modeofop',function(req,res){
-  //console.log(req.body.q1);
-  //console.log(req.body.q2);
-  //console.log(req.body.q3);
-  //console.log(req.body.q4);
-  //console.log(req.body.q5);
-  //console.log(req.body.q6);
-  //console.log(req.body);
-
 
   fs.readFile('modeofop.csv', function(err, data) {
     if (err) {
@@ -44,7 +32,6 @@ app.post('/modeofop',function(req,res){
     console.log(data);
     csv.parse(data, function(err, data) {
       if (err) {
-        console.log("here 2");
         console.error(err);
         return false;
       }
@@ -75,16 +62,6 @@ app.post('/modeofop',function(req,res){
           ['b','b','b','b','b','b'],
           [req.body.q1,req.body.q2,req.body.q3,req.body.q4,req.body.q5,req.body.q6]
         ];
-      
-  
-      //  console.log(model.classify(testData[0]) === 'aes'); // true
-      //  console.log(model.classify(testData[1]) === 'triple'); // false
-      //  console.log(model.classify(testData[2]) === 'simon');
-       // if (model.classify(testData[2]) == 'unknown'){
-       //   console.log("aes");
-       // }
-
-
 
         console.log(model.classify(testData[2]));
         let results = model.classify(testData[2]);
@@ -127,14 +104,6 @@ app.post('/modeofop',function(req,res){
 });
 
 app.post('/blockcipher',function(req,res){
-  console.log(req.body.q1);
-  console.log(req.body.q2);
-  console.log(req.body.q3);
-  console.log(req.body.q4);
-  console.log(req.body.q5);
-  console.log(req.body.q6);
-  console.log(req.body);
-
 
   fs.readFile('blockcipher.csv', function(err, data) {
     if (err) {
@@ -177,17 +146,11 @@ app.post('/blockcipher',function(req,res){
           [req.body.q1,req.body.q2,req.body.q3,req.body.q4,req.body.q5,req.body.q6]
         ];
       
-  
-        console.log(model.classify(testData[0]) === 'aes'); // true
-        console.log(model.classify(testData[1]) === 'triple'); // false
-        console.log(model.classify(testData[2]) === 'simon');
-        if (model.classify(testData[2]) == 'unknown'){
-          console.log("aes");
-        }
+
         let blurb = '';
         let img = '';
         let link = '';
-        console.log(model.classify(testData[2]));
+      
         let results = model.classify(testData[2]);
         if (results == 'des' || results == 'triple' || results == 'unknown' || results== 'idea'){
           results = 'aes';
@@ -213,7 +176,6 @@ app.post('/blockcipher',function(req,res){
           blurb = "this is the idea blurb";
         }
 
-        //get blurb for aes, simon, blowfish, idea
         
         res.render("blockcipherresults",{results:results, blurb:blurb, img:img, link:link});
   
