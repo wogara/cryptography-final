@@ -9,17 +9,37 @@
  <body>
   <br />
   <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+        
+          <a class="navbar-brand" href="/">Applied Cryptography</a>
+        </div>
+    
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        
+          
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/blockcipher">Block Cipher</a></li>
+            <li><a href='/modeofop'>Mode of Operation</a></li>
+            
+          </ul>
+        <!--</div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
    <h2 align="center">Which Block Cipher is best for you?</h2>
    <br />
    <div class="col-md-6" style="margin:0 auto; float:none;">
     <form action ="/blockcipher" method="post">
-     <h3 align="center">Choose the choice that best works for you</h3>
+     <h3 align="center">Choose the option that best works for you</h3>
      <br />
    
      <div class="form-group">
       <label>1) Is your product considered as a resource-constrained device? (ex. IoT device such as smart sensors, controllers, activity trackers, smart thermometers, coffee machines, fridges, toys)</label>
       <br>
-      <input type="radio" id = "q1yes" name="q1" value="a">
+      <input type="radio" id = "q1yes" name="q1" value="a" required>
       <label for ="q1yes">Yes</label><br>
       <input type="radio" id = "q1no" name="q1" value="b">
       <label for ="q1no">No</label><br>
@@ -30,7 +50,7 @@
      <div class="form-group">
       <label>2) How important is speed to you?</label>
       <br>
-        <input type="radio" id="q2yes" name="q2" value="a">
+        <input type="radio" id="q2yes" name="q2" value="a" required>
         <label for ="q2yes">Very Important</label><br>
         <input type="radio" id="q2no" name="q2" value="b">
         <label for="q2no">Not Important</label><br>
@@ -41,7 +61,7 @@
      <div class="form-group">
         <label>3) How lightweight does your product have to be?</label>
         <br>
-          <input type="radio" id="q3light" name="q3" value="a">
+          <input type="radio" id="q3light" name="q3" value="a" required>
           <label for ="q3light">a) light - Ex. RFID, IoT</label><br>
           <input type="radio" id="q3medium" name="q3" value="b">
           <label for="q3medium">b) medium - Ex. Microcontrollers, network protocol (SSH)</label><br>
@@ -54,7 +74,7 @@
        <div class="form-group">
         <label>    4) Is using a standard, well-implemented system important to you?</label>
         <br>
-          <input type="radio" id="q4yes" name="q4" value="a">
+          <input type="radio" id="q4yes" name="q4" value="a" required>
           <label for ="q4yes">A) Yes</label><br>
           <input type="radio" id="q4no" name="q4" value="b">
           <label for="q4no">B) No</label><br>
@@ -68,7 +88,7 @@
      <div class="form-group">
         <label> 5) How much personal information does your product store?</label>
         <br>
-          <input type="radio" id="q5personal" name="q5" value="a">
+          <input type="radio" id="q5personal" name="q5" value="a" required>
           <label for ="q5personal">a) Personal Use</label><br>
           <input type="radio" id="q5corporate" name="q5" value="b">
           <label for="q5corproate">b) Corporate Use</label><br>
@@ -81,7 +101,7 @@
        <div class="form-group">
         <label>6) Does your product use hash function as part of its data structure?</label>
         <br>
-          <input type="radio" id="q6yes" name="q6" value="a">
+          <input type="radio" id="q6yes" name="q6" value="a" required>
           <label for ="q6yes">A) Yes</label><br>
           <input type="radio" id="q6no" name="q6" value="b">
           <label for="q6no">B) No</label><br>

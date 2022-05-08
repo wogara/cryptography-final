@@ -153,10 +153,38 @@ app.post('/blockcipher',function(req,res){
         if (model.classify(testData[2]) == 'unknown'){
           console.log("aes");
         }
+        let blurb = '';
+        let img = '';
+        let link = '';
         console.log(model.classify(testData[2]));
         let results = model.classify(testData[2]);
+        if (results == 'des' || results == 'triple' || results == 'unknown' || results== 'idea'){
+          results = 'aes';
+        }
 
-        res.render("blockcipherresults",{results:results})
+        if (results == 'aes'){
+          results = 'Advanced Encryption Standard';
+          blurb = 'This block cipher has the word standard in it for a reason. It is fast enough for almost all applications (unless your device is resource-constrained), and it is not known to be efficiently breakable. AES with 128-bit keys is a great choice to start with.'
+          img = 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/AES_%28Rijndael%29_Round_Function.png/250px-AES_%28Rijndael%29_Round_Function.png';
+          link = 'https://www.educative.io/edpresso/what-is-the-aes-algorithm';
+        }else if (results == 'simon'){
+          results = "Simon";
+          blurb = "This block cipher is known to be incredibly fast (even faster than AES). It is popular to use with resource-constrained devices so if that is what your working with it is a great choice. The downside is that it is breakable with a large-computation attack and maybe look elsewhere if you are building a hash function";
+          img = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Simon_block_cipher.svg/280px-Simon_block_cipher.svg.png';
+          link = 'https://www.cryptopp.com/wiki/SIMON';
+        }else if (results == 'blowfish'){
+          results = "Blowfish";
+          blurb = "This block cipher was developed in 1993 as an alternative to the Data Encryption Standard block cipher. One of the best features is that it is not subject to any patents and is freely available to use! Look into similar alternative like Twofish if you find that Blowfish is not cutting it for you.";
+          img = 'https://www.researchgate.net/profile/Najib-Kofahi/publication/274182230/figure/fig2/AS:669965300559877@1536743583578/Block-Diagram-of-Blowfish-3.ppm';
+          link = 'https://en.wikipedia.org/wiki/Blowfish_(cipher)';
+        }else if (results == 'idea'){
+          results = "International Data Encryption Algorithm";
+          blurb = "this is the idea blurb";
+        }
+
+        //get blurb for aes, simon, blowfish, idea
+        
+        res.render("blockcipherresults",{results:results, blurb:blurb, img:img, link:link});
   
       });
     });
